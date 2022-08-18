@@ -1,8 +1,5 @@
 ---
   - name: Install Java
     hosts: all
-    become: yes
-    become_user: root
-    become_method: sudo
     roles:
       - java
