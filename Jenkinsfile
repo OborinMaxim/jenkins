@@ -1,10 +1,11 @@
 pipeline {
-    agent { docker 'aragast/agent:7' }
+    agent any
     stages {
         stage('Declarative Pipeline') {
             steps {
-                git clone https://github.com/aragastmatb/example-playbook.git
-                ansible-playbook site.yml -i inventory/prod.yml
+                sh 'rm -r *'                
+                sh 'git clone https://github.com/aragastmatb/example-playbook.git'
+                sh 'ansible-playbook example-playbook/site.yml -i example-playbook/inventory/prod.yml'
             }
         }
     }
