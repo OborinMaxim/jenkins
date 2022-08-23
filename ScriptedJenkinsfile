@@ -1,0 +1,16 @@
+node("ansible_docker"){
+    stage("Git checkout"){
+        git credentialsId: 'jenkins-github', url: 'git@github.com:OborinMaxim/jenkins.git'
+    }
+    stage("Check ssh key"){
+        secret_check=true
+    }
+    stage("Run playbook"){
+        if (secret_check){
+            sh 'ansible-playbook site.yml -i inventory/prod.yml'
+        }
+        else{
+            echo 'no more keys'
+        }
+    }
+}
