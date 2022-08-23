@@ -4,8 +4,8 @@ pipeline {
         stage('Declarative Pipeline') {
             steps {
                 sh 'rm -r *'                
-                sh 'git clone https://github.com/aragastmatb/example-playbook.git'
-                sh 'ansible-playbook example-playbook/site.yml -i example-playbook/inventory/prod.yml'
+                sh 'git clone https://github.com/OborinMaxim/jenkins.git'
+                sh 'ansible-playbook jenkins/site.yml -i jenkins/inventory/prod.yml'
             }
         }
     }
